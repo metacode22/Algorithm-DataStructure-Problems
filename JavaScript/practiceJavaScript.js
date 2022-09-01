@@ -1,5 +1,2 @@
-const temp = new Array();
-
-for (let i = 0; i < 100000000; i++) {
-    temp.push(0);
-}
+const temp = 3.7;
+console.log(parseInt(temp));
