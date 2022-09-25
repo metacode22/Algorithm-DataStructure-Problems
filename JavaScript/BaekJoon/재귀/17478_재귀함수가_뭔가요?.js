@@ -6,7 +6,6 @@ const n = Number(input[0]);
 const underBar = '____';
 const solution = (level, n) => {
     console.log(underBar.repeat(level) + '"재귀함수가 뭔가요?"');
-
     if (level === n) {
         console.log(underBar.repeat(level) + '"재귀함수는 자기 자신을 호출하는 함수라네"');
         console.log(underBar.repeat(level) + '라고 답변하였지.');
