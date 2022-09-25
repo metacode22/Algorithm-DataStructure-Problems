@@ -1,13 +1,13 @@
-var isPerfectSquare = function(num) {
+var isPerfectSquare = function (num) {
     let temp = num / 2;
     temp = parseInt(temp);
-    
+
     for (let i = temp; i > 0; i--) {
         if (i * i === num) {
-            return true
+            return true;
         }
     }
-    
+
     return false;
 };
 

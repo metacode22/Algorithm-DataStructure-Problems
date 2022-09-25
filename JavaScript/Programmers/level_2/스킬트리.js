@@ -4,28 +4,28 @@ function isSame(skill, target) {
             return false;
         }
     }
-    
+
     return true;
 }
 
 function solution(skill, skill_trees) {
     let result = 0;
-    
-    skill_trees.forEach((element) => {
+
+    skill_trees.forEach(element => {
         let compare = '';
-        
+
         for (let currentSkill of element) {
             if (skill.includes(currentSkill) === true) {
                 compare += currentSkill;
             }
-            
+
             if (isSame(skill, compare) === false) {
                 return;
-            } 
+            }
         }
-        
+
         result += 1;
-    })
-    
+    });
+
     return result;
 }

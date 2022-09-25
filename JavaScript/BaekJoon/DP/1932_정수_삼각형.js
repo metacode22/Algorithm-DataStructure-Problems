@@ -17,24 +17,24 @@ const input = fs.readFileSync(filePath).toString().trim().split('\n');
 const n = Number(input[0]);
 const graph = input.slice(1).map(element => element.split(' ').map(element => Number(element)));
 
-graph.forEach((element) => {
+graph.forEach(element => {
     if (element.length < n) {
-        currentElementLength = element.length
-        
-        for(let i = 0; i < n - currentElementLength; i++) {
+        currentElementLength = element.length;
+
+        for (let i = 0; i < n - currentElementLength; i++) {
             element.push(0);
         }
     }
-})
+});
 
 function solution(n, graph) {
     const dp = new Array();
     for (let i = 0; i < n; i++) {
         dp.push(new Array(n).fill(0));
     }
-    
+
     dp[0][0] = graph[0][0];
-    
+
     for (let i = 1; i < n; i++) {
         for (let j = 0; j < n; j++) {
             if (j === 0) {
@@ -44,7 +44,7 @@ function solution(n, graph) {
             }
         }
     }
-    
+
     return Math.max(...dp[dp.length - 1]);
 }
 
@@ -62,7 +62,7 @@ console.log(result);
 // graph.forEach((element) => {
 //     if (element.length < n) {
 //         currentElementLength = element.length
-        
+
 //         for (let i = 0; i < n - currentElementLength; i++) {
 //             element.push(0);
 //         }
@@ -71,13 +71,13 @@ console.log(result);
 
 // function DFS(level, n, currentX, currentSum, newGraph, result) {
 //     currentSum += newGraph[level][currentX];
-    
+
 //     if (level === n - 1) {
 //         result.push(currentSum);
-        
+
 //         return;
 //     }
-    
+
 //     DFS(level + 1, n, currentX, currentSum, newGraph, result);
 //     DFS(level + 1, n, currentX + 1, currentSum, newGraph, result);
 // }
@@ -85,9 +85,9 @@ console.log(result);
 // function solution(n, graph) {
 //     const newGraph = [...graph];
 //     const result = new Array();
-    
+
 //     DFS(0, n, 0, 0, newGraph, result);
-    
+
 //     return Math.max(...result);
 // }
 

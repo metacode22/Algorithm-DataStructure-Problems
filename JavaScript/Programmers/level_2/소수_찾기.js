@@ -1,16 +1,16 @@
 function isPrime(currentString) {
     const currentNumber = Number(currentString);
-    
+
     if (currentNumber <= 1) {
         return false;
     }
-    
+
     for (let i = 2; i <= parseInt(Math.sqrt(currentNumber)); i++) {
         if (currentNumber % i === 0) {
             return false;
         }
     }
-    
+
     return true;
 }
 
@@ -31,9 +31,9 @@ function solution(numbers) {
     const numbersArray = Array.from(numbers);
     const visited = new Array(numbersArray.length).fill(0);
     const result = new Set();
-    
-    DFS('', numbersArray, visited, result);   
+
+    DFS('', numbersArray, visited, result);
     console.log(result);
-    
+
     return Array.from(result).length;
 }

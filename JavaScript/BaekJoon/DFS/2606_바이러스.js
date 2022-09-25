@@ -15,7 +15,7 @@ for (let i = 0; i <= computers; i++) {
 
 for (let i = 0; i < pairs; i++) {
     let current = input[i].split(' ').map(element => Number(element));
-    
+
     matrix[current[0]].push(current[1]);
     matrix[current[1]].push(current[0]);
 }
@@ -29,10 +29,12 @@ function solution(matrix, visited) {
             }
         }
     }
-    
+
     DFS(1);
-    
-    return visited.reduce((acc, curr) => {return acc + curr})
+
+    return visited.reduce((acc, curr) => {
+        return acc + curr;
+    });
 }
 
 let result = solution(matrix, visited) - 1;

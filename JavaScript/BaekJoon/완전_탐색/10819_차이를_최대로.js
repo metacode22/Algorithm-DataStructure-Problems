@@ -8,11 +8,11 @@ let maxValue = -1;
 
 function check(current) {
     let result = 0;
-    
+
     for (let i = 0; i < current.length - 1; i++) {
         result += Math.abs(current[i] - current[i + 1]);
     }
-    
+
     if (result >= maxValue) {
         maxValue = result;
     }
@@ -23,7 +23,7 @@ function DFS(level, current, n, newNums, visited) {
         check(current);
         return;
     }
-    
+
     for (let i = 0; i < n; i++) {
         if (visited[i] === 0) {
             visited[i] = 1;
@@ -36,7 +36,7 @@ function DFS(level, current, n, newNums, visited) {
 function solution(n, nums) {
     const visited = new Array(n).fill(0);
     const newNums = [...nums];
-    
+
     DFS(0, new Array(), n, newNums, visited);
 }
 

@@ -12,22 +12,22 @@ function BFS(n, m, i, j, newGraph, color) {
     const queue = new Array();
     queue.push([i, j]);
     newGraph[i][j] = 'Dummy';
-    
+
     while (queue.length > 0) {
         const [cx, cy] = queue.shift();
         result += 1;
-        
+
         for (let i = 0; i < 4; i++) {
             const nx = cx + dx[i];
             const ny = cy + dy[i];
-            
-            if ((0 <= nx && nx < m) && (0 <= ny && ny < n) && (newGraph[nx][ny] === color)) {
+
+            if (0 <= nx && nx < m && 0 <= ny && ny < n && newGraph[nx][ny] === color) {
                 newGraph[nx][ny] = 'Dummy';
                 queue.push([nx, ny]);
             }
         }
     }
-    
+
     return result;
 }
 
@@ -35,21 +35,21 @@ function solution(n, m, graph) {
     const newGraph = [...graph];
     let whiteResult = 0;
     let blueResult = 0;
-    
+
     for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
             if (newGraph[i][j] === 'W') {
                 const result = BFS(n, m, i, j, newGraph, 'W');
-                whiteResult += result * result;         
+                whiteResult += result * result;
             }
-            
+
             if (newGraph[i][j] === 'B') {
                 const result = BFS(n, m, i, j, newGraph, 'B');
                 blueResult += result * result;
             }
         }
     }
-    
+
     return [whiteResult, blueResult];
 }
 

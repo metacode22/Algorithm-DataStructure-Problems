@@ -10,7 +10,7 @@ function solution(s) {
     s = s.replace(/seven/gi, '7');
     s = s.replace(/eight/gi, '8');
     s = s.replace(/nine/gi, '9');
-    
+
     return Number(s);
 }
 

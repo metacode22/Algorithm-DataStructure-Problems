@@ -16,28 +16,28 @@ function solution(lottos, win_nums) {
     let zeroCount = 0;
     let lowestRank;
     let highestRank;
-    
-    lottos.forEach((num) => {
+
+    lottos.forEach(num => {
         if (win_nums.includes(num)) {
             sameCount += 1;
         }
-        
+
         if (num === 0) {
             zeroCount += 1;
         }
-    })
-    
+    });
+
     if (7 - sameCount > 6) {
         lowestRank = 6;
     } else {
-        lowestRank = 7 - sameCount;    
+        lowestRank = 7 - sameCount;
     }
-    
+
     if (7 - sameCount - zeroCount > 6) {
         highestRank = 6;
     } else {
         highestRank = 7 - sameCount - zeroCount;
     }
-    
+
     return [highestRank, lowestRank];
 }

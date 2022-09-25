@@ -5,15 +5,14 @@ const input = fs.readFileSync(filePath).toString().trim().split('\n');
 const inputString = input[0];
 
 const solution = inputString => {
-	let count = 0;
+    let count = 0;
 
-	for (const string of inputString) {
-		string === string.toUpperCase() ? count++ : null;
-	}
+    for (const string of inputString) {
+        string === string.toUpperCase() ? count++ : null;
+    }
 
-	return count;
-};   
-          
-          
+    return count;
+};
+
 const result = solution(inputString);
 console.log(result);

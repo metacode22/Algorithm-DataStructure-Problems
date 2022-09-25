@@ -4,9 +4,9 @@ const input = fs.readFileSync(filePath).toString().trim().split('\n');
 
 const word = input[0];
 
-const solution = (word) => {
-  return word.replaceAll('A', '#');
-}
+const solution = word => {
+    return word.replaceAll('A', '#');
+};
 
 const result = solution(word);
 console.log(result);

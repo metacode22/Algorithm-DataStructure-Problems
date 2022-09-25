@@ -7,11 +7,11 @@ input = Number(input);
 function check(currentNumber, target) {
     currentNumber = Array.from(String(currentNumber));
     let sum = Number(currentNumber.join(''));
-    
+
     for (let i = 0; i < currentNumber.length; i++) {
         sum += Number(currentNumber[i]);
     }
-    
+
     if (sum === target) {
         return true;
     } else {
@@ -21,14 +21,14 @@ function check(currentNumber, target) {
 
 function solution(input) {
     let result = 0;
-    
+
     for (let i = 1; i < input; i++) {
         if (check(i, input) === true) {
             result = i;
             break;
         }
     }
-    
+
     console.log(result);
 }
 

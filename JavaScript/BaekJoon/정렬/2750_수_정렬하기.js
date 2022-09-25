@@ -7,7 +7,7 @@ const inputArray = input.filter((element, index) => index > 0).map(element => Nu
 
 function solution(n, inputArray) {
     let newInputArray = [...inputArray].sort((a, b) => a - b);
-    
+
     return newInputArray;
 }
 
