@@ -18,34 +18,34 @@ const n = Number(input[0]);
 const graph = input.slice(1).map(element => element.split(' ').map(element => Number(element)));
 
 graph.forEach(element => {
-    if (element.length < n) {
-        currentElementLength = element.length;
+  if (element.length < n) {
+    currentElementLength = element.length;
 
-        for (let i = 0; i < n - currentElementLength; i++) {
-            element.push(0);
-        }
+    for (let i = 0; i < n - currentElementLength; i++) {
+      element.push(0);
     }
+  }
 });
 
 function solution(n, graph) {
-    const dp = new Array();
-    for (let i = 0; i < n; i++) {
-        dp.push(new Array(n).fill(0));
+  const dp = new Array();
+  for (let i = 0; i < n; i++) {
+    dp.push(new Array(n).fill(0));
+  }
+
+  dp[0][0] = graph[0][0];
+
+  for (let i = 1; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (j === 0) {
+        dp[i][j] = dp[i - 1][j] + graph[i][j];
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j - 1], dp[i - 1][j]) + graph[i][j];
+      }
     }
+  }
 
-    dp[0][0] = graph[0][0];
-
-    for (let i = 1; i < n; i++) {
-        for (let j = 0; j < n; j++) {
-            if (j === 0) {
-                dp[i][j] = dp[i - 1][j] + graph[i][j];
-            } else {
-                dp[i][j] = Math.max(dp[i - 1][j - 1], dp[i - 1][j]) + graph[i][j];
-            }
-        }
-    }
-
-    return Math.max(...dp[dp.length - 1]);
+  return Math.max(...dp[dp.length - 1]);
 }
 
 const result = solution(n, graph);

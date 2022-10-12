@@ -6,21 +6,21 @@ const n = Number(input[0]);
 const sticks = input.slice(1).map(height => Number(height));
 
 const solution = (n, sticks) => {
-    const stack = new Array();
-    const newSticks = [...sticks];
+  const stack = new Array();
+  const newSticks = [...sticks];
 
-    newSticks.reverse().forEach(height => {
-        if (stack.length === 0) {
-            stack.push(height);
-            return;
-        }
+  newSticks.reverse().forEach(height => {
+    if (stack.length === 0) {
+      stack.push(height);
+      return;
+    }
 
-        if (height > stack[stack.length - 1]) {
-            stack.push(height);
-        }
-    });
+    if (height > stack[stack.length - 1]) {
+      stack.push(height);
+    }
+  });
 
-    return stack.length;
+  return stack.length;
 };
 
 const result = solution(n, sticks);

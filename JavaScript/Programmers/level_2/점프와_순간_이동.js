@@ -1,11 +1,11 @@
 function solution(n) {
-    let count = 0;
+  let count = 0;
 
-    while (n > 0) {
-        if (n % 2) count++;
+  while (n > 0) {
+    if (n % 2) count++;
 
-        n = parseInt(n / 2);
-    }
+    n = parseInt(n / 2);
+  }
 
-    return count;
+  return count;
 }

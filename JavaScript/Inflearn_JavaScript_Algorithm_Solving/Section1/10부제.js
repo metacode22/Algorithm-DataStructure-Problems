@@ -6,10 +6,10 @@ const day = Number(input[0]);
 const cars = input[1].split(' ').map(string => Number(string));
 
 const solution = (day, cars) => {
-    const newCars = [...cars];
-    const violatedCars = newCars.filter(car => car % 10 === day);
+  const newCars = [...cars];
+  const violatedCars = newCars.filter(car => car % 10 === day);
 
-    return violatedCars.length;
+  return violatedCars.length;
 };
 
 const result = solution(day, cars);

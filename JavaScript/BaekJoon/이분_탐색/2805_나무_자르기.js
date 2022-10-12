@@ -7,40 +7,40 @@ const m = Number(input[0].split(' ')[1]);
 const trees = input[1].split(' ').map(element => Number(element));
 
 function check(currentHeight, newTrees) {
-    let result = 0;
+  let result = 0;
 
-    newTrees.forEach(element => {
-        if (element >= currentHeight) {
-            result += element - currentHeight;
-        }
-    });
+  newTrees.forEach(element => {
+    if (element >= currentHeight) {
+      result += element - currentHeight;
+    }
+  });
 
-    return result;
+  return result;
 }
 
 function solution(n, m, trees) {
-    const newTrees = [...trees];
-    newTrees.sort((a, b) => a - b);
+  const newTrees = [...trees];
+  newTrees.sort((a, b) => a - b);
 
-    let start = 0;
-    let end = newTrees[newTrees.length - 1];
-    let result = Number.MIN_SAFE_INTEGER;
+  let start = 0;
+  let end = newTrees[newTrees.length - 1];
+  let result = Number.MIN_SAFE_INTEGER;
 
-    while (start <= end) {
-        const mid = parseInt((start + end) / 2);
+  while (start <= end) {
+    const mid = parseInt((start + end) / 2);
 
-        if (check(mid, newTrees) >= m) {
-            start = mid + 1;
+    if (check(mid, newTrees) >= m) {
+      start = mid + 1;
 
-            if (mid > result) {
-                result = mid;
-            }
-        } else {
-            end = mid - 1;
-        }
+      if (mid > result) {
+        result = mid;
+      }
+    } else {
+      end = mid - 1;
     }
+  }
 
-    return result;
+  return result;
 }
 
 const result = solution(n, m, trees);

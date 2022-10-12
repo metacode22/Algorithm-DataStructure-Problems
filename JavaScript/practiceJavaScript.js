@@ -1,26 +1,18 @@
-const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
-const input = fs.readFileSync(filePath).toString().trim().split('\n');
+var moveZeroes = function (nums) {
+  var pos = 0;
+  for (var i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      nums[pos++] = nums[i];
+    }
+    console.log(nums);
+  }
 
-const inputString = input[0];
-const m = Number(input[1]);
-const inputCommands = input.slice(2);
-
-const solution = (inputString, inputCommands) => {
-    const leftStack = inputString.split('');
-    const rightStack = [];
-
-    inputCommands.forEach(inputCommand => {
-        const [command, stringToAdd] = inputCommand.split(' ');
-
-        if (command === 'L' && leftStack.length !== 0) rightStack.push(leftStack.pop());
-        if (command === 'D' && rightStack.length !== 0) leftStack.push(rightStack.pop());
-        if (command === 'B' && leftStack.length !== 0) leftStack.pop();
-        if (command === 'P') leftStack.push(stringToAdd);
-    });
-
-    return leftStack.concat(rightStack.reverse()).join('');
+  console.log(nums, pos);
+  for (i = pos; i < nums.length; i++) {
+    nums[i] = 0;
+  }
 };
 
-const result = solution(inputString, inputCommands);
-console.log(result);
+const input = [0, 1, 0, 3, 12];
+moveZeroes(input);
+// console.log(input);

@@ -8,32 +8,32 @@ const arrayM = input[3].split(' ').map(element => Number(element));
 arrayN.sort((a, b) => a - b);
 
 function binarySearch(arrayN, target) {
-    let leftIndex = 0;
-    let rightIndex = arrayN.length - 1;
+  let leftIndex = 0;
+  let rightIndex = arrayN.length - 1;
 
-    while (leftIndex <= rightIndex) {
-        const mid = parseInt((leftIndex + rightIndex) / 2);
+  while (leftIndex <= rightIndex) {
+    const mid = parseInt((leftIndex + rightIndex) / 2);
 
-        if (arrayN[mid] === target) {
-            return '1';
-        } else if (arrayN[mid] > target) {
-            rightIndex = mid - 1;
-        } else {
-            leftIndex = mid + 1;
-        }
+    if (arrayN[mid] === target) {
+      return '1';
+    } else if (arrayN[mid] > target) {
+      rightIndex = mid - 1;
+    } else {
+      leftIndex = mid + 1;
     }
+  }
 
-    return '0';
+  return '0';
 }
 
 function solution(n, arrayN, m, arrayM) {
-    let result = '';
+  let result = '';
 
-    for (let i = 0; i < m; i++) {
-        result += binarySearch(arrayN, arrayM[i]) + ' ';
-    }
+  for (let i = 0; i < m; i++) {
+    result += binarySearch(arrayN, arrayM[i]) + ' ';
+  }
 
-    console.log(result.trim());
+  console.log(result.trim());
 }
 
 solution(n, arrayN, m, arrayM);

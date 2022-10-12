@@ -5,13 +5,13 @@ const input = fs.readFileSync(filePath).toString().trim().split('\n');
 const inputString = input[0];
 
 const solution = inputString => {
-    let result = '';
+  let result = '';
 
-    for (const string of inputString) {
-        string === string.toUpperCase() ? (result += string.toLowerCase()) : (result += string.toUpperCase());
-    }
+  for (const string of inputString) {
+    string === string.toUpperCase() ? (result += string.toLowerCase()) : (result += string.toUpperCase());
+  }
 
-    return result;
+  return result;
 };
 
 const result = solution(inputString);

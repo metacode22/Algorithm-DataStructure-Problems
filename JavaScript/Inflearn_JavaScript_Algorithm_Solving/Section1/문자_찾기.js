@@ -6,13 +6,13 @@ const word = input[0];
 const specialAlphabet = input[1];
 
 const solution = (word, specialAlphabet) => {
-    let count = 0;
+  let count = 0;
 
-    for (const alphabet of word) {
-        if (alphabet === specialAlphabet) count++;
-    }
+  for (const alphabet of word) {
+    if (alphabet === specialAlphabet) count++;
+  }
 
-    return count;
+  return count;
 };
 
 const result = solution(word, specialAlphabet);

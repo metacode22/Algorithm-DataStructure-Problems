@@ -6,7 +6,7 @@ const n = Number(input[0]);
 const DOZEN = 12;
 
 const solution = n => {
-    return Math.ceil(n / DOZEN);
+  return Math.ceil(n / DOZEN);
 };
 
 const result = solution(n);

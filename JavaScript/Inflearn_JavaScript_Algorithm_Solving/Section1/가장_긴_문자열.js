@@ -6,13 +6,13 @@ const n = Number(input[0]);
 const words = input.slice(1);
 
 const solution = (n, words) => {
-    let longestWord = words[0];
+  let longestWord = words[0];
 
-    for (const word of words) {
-        if (word.length > longestWord.length) longestWord = word;
-    }
+  for (const word of words) {
+    if (word.length > longestWord.length) longestWord = word;
+  }
 
-    return longestWord;
+  return longestWord;
 };
 
 const result = solution(n, words);

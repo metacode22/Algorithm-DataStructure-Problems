@@ -6,20 +6,20 @@ const n = Number(input[0]);
 const words = input.slice(1);
 
 const solution = words => {
-    const newWords = [...words];
-    const map = new Map();
+  const newWords = [...words];
+  const map = new Map();
 
-    newWords.forEach(word => {
-        map.set(word, true);
-    });
+  newWords.forEach(word => {
+    map.set(word, true);
+  });
 
-    let result = '';
+  let result = '';
 
-    map.forEach((_, key) => {
-        result += `${key}\n`;
-    });
+  map.forEach((_, key) => {
+    result += `${key}\n`;
+  });
 
-    return result.slice(0, result.length - 1);
+  return result.slice(0, result.length - 1);
 };
 
 const result = solution(words);

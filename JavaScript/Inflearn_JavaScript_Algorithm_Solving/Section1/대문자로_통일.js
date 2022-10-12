@@ -5,7 +5,7 @@ const input = fs.readFileSync(filePath).toString().trim().split('\n');
 const inputString = input[0];
 
 const solution = () => {
-    return inputString.toUpperCase();
+  return inputString.toUpperCase();
 };
 
 const result = solution(inputString);

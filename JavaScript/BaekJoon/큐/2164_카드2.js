@@ -5,17 +5,17 @@ let input = fs.readFileSync(filePath).toString().trim().split('\n');
 const n = Number(input[0]);
 
 function solution(n) {
-    const numberArray = Array.from({ length: n }, (v, i) => i + 1);
+  const numberArray = Array.from({ length: n }, (v, i) => i + 1);
 
-    while (numberArray.length > 1) {
-        numberArray.shift();
+  while (numberArray.length > 1) {
+    numberArray.shift();
 
-        const temp = numberArray.shift();
+    const temp = numberArray.shift();
 
-        numberArray.push(temp);
-    }
+    numberArray.push(temp);
+  }
 
-    return numberArray[0];
+  return numberArray[0];
 }
 
 const result = solution(n);

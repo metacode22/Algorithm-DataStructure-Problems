@@ -5,7 +5,7 @@ const input = fs.readFileSync(filePath).toString().trim().split('\n');
 const inputArray = input[0].split(' ').map(element => Number(element));
 
 const solution = inputArray => {
-    return Math.min(...inputArray);
+  return Math.min(...inputArray);
 };
 
 const result = solution(inputArray);

@@ -1,17 +1,17 @@
 function solution(s) {
-    const stack = new Array();
+  const stack = new Array();
 
-    for (let i = 0; i < s.length; i++) {
-        if (stack.length > 0 && stack[stack.length - 1] === s[i]) {
-            stack.pop();
-        } else {
-            stack.push(s[i]);
-        }
+  for (let i = 0; i < s.length; i++) {
+    if (stack.length > 0 && stack[stack.length - 1] === s[i]) {
+      stack.pop();
+    } else {
+      stack.push(s[i]);
     }
+  }
 
-    if (stack.length !== 0) {
-        return 0;
-    }
+  if (stack.length !== 0) {
+    return 0;
+  }
 
-    return 1;
+  return 1;
 }

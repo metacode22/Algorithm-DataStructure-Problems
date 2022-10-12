@@ -38,19 +38,19 @@
 const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
 const input = fs
-    .readFileSync(filePath)
-    .toString()
-    .trim()
-    .split('\n')
-    .map(string => Number(string));
+  .readFileSync(filePath)
+  .toString()
+  .trim()
+  .split('\n')
+  .map(string => Number(string));
 
 const numbers = input.slice(1);
 
 const solution = numbers => {
-    const newNumbers = [...numbers];
-    newNumbers.sort((a, b) => a - b);
+  const newNumbers = [...numbers];
+  newNumbers.sort((a, b) => a - b);
 
-    return newNumbers;
+  return newNumbers;
 };
 
 const result = solution(numbers).join('\n');

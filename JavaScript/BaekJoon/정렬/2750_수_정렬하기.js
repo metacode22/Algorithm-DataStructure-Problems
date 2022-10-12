@@ -6,9 +6,9 @@ const n = Number(input[0]);
 const inputArray = input.filter((element, index) => index > 0).map(element => Number(element));
 
 function solution(n, inputArray) {
-    let newInputArray = [...inputArray].sort((a, b) => a - b);
+  let newInputArray = [...inputArray].sort((a, b) => a - b);
 
-    return newInputArray;
+  return newInputArray;
 }
 
 const result = solution(n, inputArray);
