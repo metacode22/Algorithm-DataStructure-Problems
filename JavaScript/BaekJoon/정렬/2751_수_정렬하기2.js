@@ -1,3 +1,25 @@
+// 그냥 sort
+const fs = require('fs');
+const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
+const input = fs
+  .readFileSync(filePath)
+  .toString()
+  .trim()
+  .split('\n')
+  .map(string => Number(string));
+
+const numbers = input.slice(1);
+
+const solution = numbers => {
+  const newNumbers = [...numbers];
+  newNumbers.sort((a, b) => a - b);
+
+  return newNumbers;
+};
+
+const result = solution(numbers).join('\n');
+console.log(result);
+
 // 퀵 정렬, 시간 초과 뜬다.
 // const fs = require('fs');
 // const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
@@ -33,25 +55,3 @@
 
 // solution(numbers);
 // console.log(numbers.join('\n'));
-
-// 그냥 sort
-const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
-const input = fs
-  .readFileSync(filePath)
-  .toString()
-  .trim()
-  .split('\n')
-  .map(string => Number(string));
-
-const numbers = input.slice(1);
-
-const solution = numbers => {
-  const newNumbers = [...numbers];
-  newNumbers.sort((a, b) => a - b);
-
-  return newNumbers;
-};
-
-const result = solution(numbers).join('\n');
-console.log(result);
