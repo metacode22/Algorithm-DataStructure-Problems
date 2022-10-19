@@ -9,6 +9,7 @@ class singlyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
+    this.size = 0;
   }
 
   find(target) {
@@ -32,6 +33,8 @@ class singlyLinkedList {
       this.tail.next = newNode;
       this.tail = newNode;
     }
+
+    this.size += 1;
   }
 
   insert(node, value) {
@@ -48,6 +51,8 @@ class singlyLinkedList {
     if (newNode.next === null) {
       this.tail = newNode;
     }
+
+    this.size += 1;
   }
 
   remove(target) {
@@ -65,10 +70,12 @@ class singlyLinkedList {
     if (this.tail === previousNode && previousNode.value === target) {
       this.head = null;
       this.tail = null;
+      this.size = 0;
       return;
     }
 
     previousNode.next = previousNode.next.next;
+    this.size -= 1;
   }
 
   display() {
@@ -88,16 +95,20 @@ class singlyLinkedList {
 
     console.log(displayString);
   }
+
+  getSize() {
+    return this.size;
+  }
 }
 
 const linkedList = new singlyLinkedList();
 console.log(linkedList.find(1));
 linkedList.remove(3); //
 linkedList.insert(linkedList.find(1), 1); //
-linkedList.insert(linkedList.find(0), 2); // 
-linkedList.remove(2); // 
-linkedList.remove(1); // 
-linkedList.display(); 
+linkedList.insert(linkedList.find(0), 2); //
+linkedList.remove(2); //
+linkedList.remove(1); //
+linkedList.display();
 linkedList.append(1); // 1
 linkedList.insert(linkedList.find(1), 1); // 1 1
 linkedList.display();
