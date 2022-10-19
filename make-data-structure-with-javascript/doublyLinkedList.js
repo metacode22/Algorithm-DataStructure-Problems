@@ -16,7 +16,7 @@ class doublyLinkedList {
   find(target) {
     let currentNode = this.head;
 
-    while ((currentNode !== null) & (currentNode.value !== target)) {
+    while (currentNode !== null && currentNode.value !== target) {
       currentNode = currentNode.next;
     }
 
@@ -65,22 +65,121 @@ class doublyLinkedList {
 
     let previousNode = this.head;
 
-    while (previouseNode.next !== null && previouseNode.next.value !== target) {
+    if (
+      previousNode.next !== null &&
+      previousNode === this.head &&
+      previousNode !== this.tail &&
+      previousNode.value === target
+    ) {
+      this.head = previousNode.next;
+      previousNode.prev = null;
+      this.size -= 1;
+      return;
+    }
+
+    while (previousNode.next !== null && previousNode.next.value !== target) {
       previousNode = previousNode.next;
     }
-    
-    // 마지막 노드를 제거할 경우를 생각
-    if (previouseNode.next === null && previouseNode.value !== target) return;
-    if (this.tail)
+
+    if (previousNode === this.head && previousNode === this.tail && previousNode.value === target) {
+      this.head = null;
+      this.tail = null;
+      this.size = 0;
+      return;
+    }
+
+    if (previousNode.next === null) return;
+
+    if (previousNode.next === this.tail) {
+      this.tail = previousNode;
+      previousNode.next = null;
+      this.size -= 1;
+      return;
+    }
+
+    previousNode.next = previousNode.next.next;
+    previousNode.next.next.prev = previousNode;
+    this.size -= 1;
   }
 
   display() {
+    let currentNode = this.head;
     let displayString = '[';
+
+    while (currentNode !== null) {
+      displayString += `${currentNode.value}, `;
+      currentNode = currentNode.next;
+    }
+
+    if (displayString.length >= 3) {
+      displayString = displayString.substring(0, displayString.length - 2);
+    }
+
+    displayString += ']';
+
+    console.log(displayString);
   }
 
   getSize() {
     return this.size;
   }
+
+  forwardTraversal() {
+    let currentNode = this.head;
+    console.log('forward traversal');
+
+    do {
+      if (currentNode.value !== null) console.log(currentNode.value);
+      currentNode = currentNode.next;
+    } while (currentNode !== null);
+  }
+
+  reverseTraversal() {
+    let currentNode = this.tail;
+    console.log('reverse traversal');
+    
+    do {
+      if (currentNode.value !== null) console.log(currentNode.value);
+      currentNode = currentNode.prev;
+    } while(currentNode !== null)
+    
+  }
 }
 
 // find해서 prev와 prev.prev, next와 next.next를 한 번 찍어보자
+const linkedList = new doublyLinkedList();
+linkedList.remove(3); //
+linkedList.insert(linkedList.find(1), 1); //
+linkedList.insert(linkedList.find(0), 2); //
+linkedList.remove(1); //
+linkedList.display(); // []
+linkedList.append(1); //
+linkedList.insert(linkedList.find(1), 1); //
+linkedList.display(); // 1 1
+linkedList.remove(1);
+linkedList.display(); // 1
+linkedList.remove(1);
+linkedList.insert(linkedList.find(1), 4); //
+linkedList.display(); // []
+linkedList.append(2);
+linkedList.display(); // 2
+linkedList.append(7);
+linkedList.append(5);
+linkedList.display();
+linkedList.insert(linkedList.find(12), 1);
+linkedList.insert(linkedList.find(1), 3);
+linkedList.insert(linkedList.find(5), 3);
+linkedList.display(); // 2 7 5 3
+linkedList.forwardTraversal();
+linkedList.reverseTraversal();
+linkedList.remove(2);
+linkedList.display(); // 7 5 3
+linkedList.remove(3);
+linkedList.display(); // 7 5
+linkedList.remove(3);
+linkedList.display(); // 7 5
+linkedList.remove(5);
+linkedList.remove(4);
+linkedList.remove(7);
+linkedList.remove(1);
+linkedList.display(); // []
