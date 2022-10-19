@@ -1,0 +1,1 @@
+linkedList.remove(1);
