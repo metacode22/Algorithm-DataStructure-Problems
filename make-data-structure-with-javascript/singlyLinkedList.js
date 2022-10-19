@@ -38,11 +38,10 @@ class singlyLinkedList {
   }
 
   insert(node, value) {
-    const newNode = new Node(value);
-
     // fix: 그냥 find한 node가 null이라면 단순히 잘못된 입력이라고 생각한다. 따라서 바로 return해서 종료
-    // 이 때 newNode는 가비지 컬렉션에 의해 이후에 제거될 거니까 그대로 놔둬도 될까?
     if (node === null) return;
+
+    const newNode = new Node(value);
 
     newNode.next = node.next;
     node.next = newNode;
@@ -57,7 +56,7 @@ class singlyLinkedList {
 
   remove(target) {
     if (this.head === null) return;
-
+    
     let previousNode = this.head;
 
     // fix: 찾는 노드가 없을 경우, 즉 마지막 노드의 이전 노드까지 탐색하고 멈춰야 한다. 이에 따라 조건문 추가
@@ -65,15 +64,30 @@ class singlyLinkedList {
       previousNode = previousNode.next;
     }
 
-    // fix: 찾는 노드가 없을 경우, 즉 마지막 노드의 이전 노드까지 탐색하고 멈춰야 한다.
-    if (previousNode.next === null && previousNode.value !== target) return;
-    if (this.tail === previousNode && previousNode.value === target) {
+    // fix: 찾는 노드가 없을 경우, 마지막 노드(tail)까지 탐색했을 것이다.
+    if (previousNode === this.head && previousNode === this.tail && previousNode.value === target) {
       this.head = null;
       this.tail = null;
       this.size = 0;
       return;
     }
+    
+    if (previousNode.next === null) return;
+    
+    // if (previousNode.next === null && previousNode.value !== target) return;
 
+    // // fix: 제거될 노드가 tail인 경우
+    // if (previousNode.next === this.tail && previousNode.next === this.head && previousNode.value === target) {
+    //   this.head = null;
+    //   this.tail = null;
+    //   this.size = 0;
+    //   return;
+    // }
+    // if (previousNode.next === this.tail) {
+    //   this.tail = previousNode;
+    // }
+
+    if (previousNode.next === this.tail) this.tail = previousNode;
     previousNode.next = previousNode.next.next;
     this.size -= 1;
   }
@@ -102,30 +116,44 @@ class singlyLinkedList {
 }
 
 const linkedList = new singlyLinkedList();
-console.log(linkedList.find(1));
+// linkedList.append(1);
+// linkedList.append(2);
+// linkedList.append(3);
+// linkedList.display();
+// linkedList.remove(3);
+// linkedList.display();
+// console.log(linkedList.head);
+// console.log(linkedList.tail);
 linkedList.remove(3); //
 linkedList.insert(linkedList.find(1), 1); //
 linkedList.insert(linkedList.find(0), 2); //
 linkedList.remove(2); //
 linkedList.remove(1); //
-linkedList.display();
-linkedList.append(1); // 1
-linkedList.insert(linkedList.find(1), 1); // 1 1
-linkedList.display();
-linkedList.remove(1); // 1
-linkedList.insert(linkedList.find(1), 4); // 1 4
-linkedList.display();
-linkedList.append(2); // 1 4 2
-linkedList.display();
-linkedList.append(7); // 1 4 2 7
-linkedList.append(5); // 1 4 2 7 5
-linkedList.insert(linkedList.find(12), 1); // 1 4 2 7 5
-linkedList.insert(linkedList.find(1), 3); // 1 3 4 2 7 5
-linkedList.insert(linkedList.find(5), 3); // 1 3 4 2 7 5 3
-linkedList.display();
-linkedList.remove(2); // 1 3 4 7 5 3
-linkedList.display();
-console.log(linkedList.find(5));
-console.log(linkedList.find(3));
-linkedList.remove(3); // 1 4 7 5 3
+linkedList.display(); // []
+linkedList.append(1); // 
+linkedList.insert(linkedList.find(1), 1); // 
+linkedList.display(); // 1 1
+linkedList.remove(1); // 
+linkedList.insert(linkedList.find(1), 4); // 
+linkedList.display(); // 1 4
+linkedList.append(2); 
+linkedList.display(); // 1 4 2
+linkedList.append(7); 
+linkedList.append(5); 
+linkedList.insert(linkedList.find(12), 1); 
+linkedList.insert(linkedList.find(1), 3); 
+linkedList.insert(linkedList.find(5), 3); 
+linkedList.display(); // 1 3 4 2 7 5 3
+linkedList.remove(2); 
+linkedList.display(); // 1 3 4 7 5 3
+linkedList.remove(3); 
+linkedList.display(); // 1 4 7 5 3
+linkedList.remove(3);
+linkedList.display(); // 1 4 7 5
+linkedList.remove(5);
+linkedList.remove(4);
+linkedList.remove(7);
+console.log(linkedList.head);
+console.log(linkedList.tail);
+linkedList.remove(1);
 linkedList.display();
