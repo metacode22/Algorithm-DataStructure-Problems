@@ -10,10 +10,10 @@ class Queue {
     this.rear++;
   }
   dequeue() {
-    if (this.queue.length === 0) return null;
-    
+    if(this.rear - this.front <= 0) return null; 
+
     const dequeuedValue = this.queue[this.front];
-    
+
     if (this.front < this.rear) {
       delete this.queue[this.front];
       this.front++;
@@ -26,7 +26,14 @@ class Queue {
     return this.queue[this.front];
   }
 
-  display() {}
+  display() {
+    let displayString = '[';
+    this.queue.forEach(value => (displayString += `${value}, `));
+    if (displayString.length >= 3) displayString = displayString.substring(0, displayString.length - 2);
+    displayString += ']';
+
+    console.log(displayString);
+  }
 
   getSize() {
     return this.rear - this.front;
