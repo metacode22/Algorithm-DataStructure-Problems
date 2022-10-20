@@ -1,1 +1,0 @@
-previousNode.next === null;

@@ -170,6 +170,8 @@ linkedList.insert(linkedList.find(12), 1);
 linkedList.insert(linkedList.find(1), 3);
 linkedList.insert(linkedList.find(5), 3);
 linkedList.display(); // 2 7 5 3
+console.log(linkedList.find(5).prev.prev);
+console.log(linkedList.find(7).next.next);
 linkedList.forwardTraversal();
 linkedList.reverseTraversal();
 linkedList.remove(2);
