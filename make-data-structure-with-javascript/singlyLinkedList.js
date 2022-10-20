@@ -47,9 +47,7 @@ class singlyLinkedList {
     node.next = newNode;
 
     // fix: insert가 마지막 요소에 이루어질 수 있으므로, 이 경우 tail을 옮겨줘야 한다.
-    if (newNode.next === null) {
-      this.tail = newNode;
-    }
+    if (newNode.next === null) this.tail = newNode;
 
     this.size += 1;
   }
@@ -112,6 +110,7 @@ class singlyLinkedList {
 }
 
 const linkedList = new singlyLinkedList();
+console.log(linkedList.find(3));
 linkedList.remove(3); //
 linkedList.insert(linkedList.find(1), 1); //
 linkedList.insert(linkedList.find(0), 2); //
@@ -144,3 +143,9 @@ linkedList.remove(4);
 linkedList.remove(7);
 linkedList.remove(1);
 linkedList.display(); // []
+linkedList.append(1);
+linkedList.append(2);
+linkedList.append(3);
+linkedList.append(4);
+linkedList.remove(4);
+linkedList.display();

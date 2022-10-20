@@ -28,7 +28,7 @@ class Queue {
   dequeue() {
     if (this.head === null) return null;
     
-    if (this.head !== null && this.head === this.tail) {
+    if (this.head === this.tail) {
       const dequeuedValue = this.head.value;
       this.head = null;
       this.tail = null;
