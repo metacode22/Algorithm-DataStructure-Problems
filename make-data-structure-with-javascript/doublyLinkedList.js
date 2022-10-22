@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class doublyLinkedList {
+class DoublyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -147,7 +147,7 @@ class doublyLinkedList {
 }
 
 // find해서 prev와 prev.prev, next와 next.next를 한 번 찍어보자
-const linkedList = new doublyLinkedList();
+const linkedList = new DoublyLinkedList();
 linkedList.remove(3); //
 linkedList.insert(linkedList.find(1), 1); //
 linkedList.insert(linkedList.find(0), 2); //

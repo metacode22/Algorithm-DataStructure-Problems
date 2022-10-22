@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class circularLinkedList {
+class CircularLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -131,7 +131,7 @@ class circularLinkedList {
   }
 }
 
-const linkedList = new circularLinkedList();
+const linkedList = new CircularLinkedList();
 // linkedList.append(1);
 // linkedList.append(2);
 // linkedList.append(3);
@@ -170,6 +170,7 @@ linkedList.insert(linkedList.find(12), 1);
 linkedList.insert(linkedList.find(1), 3);
 linkedList.insert(linkedList.find(5), 3);
 linkedList.display(); // 2 7 5 3
+linkedList.traversal();
 linkedList.remove(2);
 linkedList.display(); // 7 5 3
 linkedList.remove(3);
@@ -187,3 +188,5 @@ linkedList.append(3);
 linkedList.append(4);
 linkedList.remove(4);
 linkedList.display();
+linkedList.traversal();
+

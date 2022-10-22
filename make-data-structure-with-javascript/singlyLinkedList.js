@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class singlyLinkedList {
+class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -109,7 +109,7 @@ class singlyLinkedList {
   }
 }
 
-const linkedList = new singlyLinkedList();
+const linkedList = new SinglyLinkedList();
 console.log(linkedList.find(3));
 linkedList.remove(3); //
 linkedList.insert(linkedList.find(1), 1); //
