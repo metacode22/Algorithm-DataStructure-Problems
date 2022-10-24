@@ -1,5 +1,20 @@
-const temp = [1, 2, 3, 4];
-delete temp[0];
-console.log(temp);
-console.log(temp[0]);
-console.log(temp[1]);
+function solution(tickets) {
+  const answer = [];
+  const DFS = (start, tickets, path) => {
+    const newPath = [...path, start];
+    if (tickets.length === 0) {
+      answer.push(path);
+    } else {
+      tickets.map((ticket, index) => {
+        if (ticket[0] === start) {
+          const copiedTickets = [...tickets];
+          const nextAirport = ticket[1];
+          copiedTickets.splice(index, 1);
+          DFS(nextAirport, copiedTickets, newPath);
+        }
+      });
+    }
+    DFS('ICN', tickets, []);
+    return answer.sort()[0];
+  };
+}

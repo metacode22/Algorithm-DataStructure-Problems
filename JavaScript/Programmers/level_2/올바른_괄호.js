@@ -12,9 +12,9 @@
 //           if (bracket === ')') return false;
 //       }
 //   }
-  
+
 //   if (stack.length > 0) return false;
-  
+
 //   return true;
 // }
 
@@ -23,16 +23,16 @@
 // function solution(s){
 //   const brackets = s.split('');
 //   const stack = [];
-  
+
 //   for (const bracket of brackets) {
 //       if (bracket === '(') stack.push(bracket);
 //       else {
 //           if (stack.length === 0) return false;
-          
+
 //           stack.pop();
 //       }
 //   }
-  
+
 //   return stack.length === 0;
 // }
 
@@ -40,15 +40,15 @@
 // stack이라는 배열 자료구조를 이용하지 않기 때문에 메모리를 절약할 수 있다.
 // function solution(s){
 //   let count = 0;
-  
+
 //   for (const bracket of s) {
 //       if (bracket === '(') count += 1;
 //       else {
 //           if (count === 0) return false;
-          
+
 //           count -= 1;
 //       }
 //   }
-  
+
 //   return count === 0;
 // }

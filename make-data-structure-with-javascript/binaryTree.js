@@ -51,7 +51,7 @@ class Tree {
         result.push(node.value);
       }
     };
-    
+
     _postorder(this.root);
     console.log(result.join(' ').trim());
   }

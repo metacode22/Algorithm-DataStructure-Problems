@@ -79,7 +79,7 @@ class CircularLinkedList {
 
     // 끝까지 오고 못 찾은 경우
     if (previousNode.next === this.head && previousNode.value !== target) return;
-    
+
     if (previousNode.next === this.tail) this.tail = previousNode;
     previousNode.next = previousNode.next.next;
     this.size -= 1;
@@ -189,4 +189,3 @@ linkedList.append(4);
 linkedList.remove(4);
 linkedList.display();
 linkedList.traversal();
-

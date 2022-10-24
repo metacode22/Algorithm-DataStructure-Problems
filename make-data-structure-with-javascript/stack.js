@@ -44,17 +44,17 @@ class Stack {
       console.log('empty');
       return;
     }
-    
+
     let displayString = 'top ';
     let currentNode = this.top;
-    
+
     while (currentNode !== null) {
       displayString += `${currentNode.value} `;
       currentNode = currentNode.next;
     }
-    
+
     displayString += 'bottom';
-    
+
     console.log(displayString);
   }
 }

@@ -1,9 +1,9 @@
 function addUpTo1(n) {
-	let total = 0;
+  let total = 0;
 
-	for (let i = 1; i <= n; i++) total += i;
+  for (let i = 1; i <= n; i++) total += i;
 
-	return total;
+  return total;
 }
 
 const time1 = performance.now();
@@ -13,7 +13,7 @@ const time2 = performance.now();
 console.log(`${(time2 - time1) / 1000} seconds`);
 
 function addUpTo2(n) {
-	return (total = (n * (n + 1)) / 2);
+  return (total = (n * (n + 1)) / 2);
 }
 
 const time3 = performance.now();

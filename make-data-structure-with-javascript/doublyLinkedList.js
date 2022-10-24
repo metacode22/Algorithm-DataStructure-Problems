@@ -137,12 +137,11 @@ class DoublyLinkedList {
   reverseTraversal() {
     let currentNode = this.tail;
     console.log('reverse traversal');
-    
+
     do {
       if (currentNode.value !== null) console.log(currentNode.value);
       currentNode = currentNode.prev;
-    } while(currentNode !== null)
-    
+    } while (currentNode !== null);
   }
 }
 
