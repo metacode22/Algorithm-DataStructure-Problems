@@ -9,9 +9,8 @@ class Queue {
     this.queue[this.rear] = value;
     this.rear++;
   }
-  dequeue() {
-    if(this.rear - this.front <= 0) return null; 
 
+  dequeue() {
     const dequeuedValue = this.queue[this.front];
 
     if (this.front < this.rear) {
@@ -38,6 +37,10 @@ class Queue {
   getSize() {
     return this.rear - this.front;
   }
+
+  isEmpty() {
+    return this.rear - this.front === 0;
+  }
 }
 
 const queue = new Queue();
@@ -54,4 +57,8 @@ console.log(queue.peek());
 console.log(queue.dequeue());
 console.log(queue.dequeue());
 console.log(queue.getSize());
+console.log(queue);
+console.log(queue.isEmpty());
+queue.dequeue();
+console.log(queue.isEmpty());
 console.log(queue);
