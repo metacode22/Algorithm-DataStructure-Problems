@@ -1,14 +1,18 @@
 function solution(arr) {
-  const result = new Array();
-  const stack = new Array();
-  const newArr = [...arr];
+  const stack = [];
+  const result = [];
 
-  newArr.map(element => {
-    if (stack[stack.length - 1] != element) {
-      result.push(element);
+  arr.forEach(number => {
+    if (stack[0] !== number) {
+      stack.pop();
     }
 
-    stack.push(element);
+    if (!stack.length) {
+      stack.push(number);
+      result.push(number);
+    }
+
+    if (stack[0] === number) return;
   });
 
   return result;
