@@ -1,83 +1,28 @@
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+// 명령형
+// 하나하나 다 로직을 구현하여 넣었다.
+// result라는 배열에 for문을 돌려서 * 2해서...
+// 즉 어떻게 처리해야 하는지에 대한 것이 묘사되어 있다.
+function double(arr) {
+  let result = [];
 
-class Queue {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.size = 0;
-  }
-
-  enqueue(value) {
-    const newNode = new Node(value);
-
-    if (this.head === null) {
-      this.head = newNode;
-      this.tail = newNode;
-    } else {
-      this.tail.next = newNode;
-      this.tail = newNode;
-    }
-
-    this.size++;
-  }
-
-  dequeue() {
-    if (this.head === null) return;
-
-    const dequeuedValue = this.head.value;
-    this.head = this.head.next;
-    this.size--;
-
-    return dequeuedValue;
-  }
-
-  isEmpty() {
-    return this.size === 0;
-  }
-}
-
-const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
-const input = fs.readFileSync(filePath).toString().trim().split('\n');
-
-const [n, m, k, x] = input[0].split(' ').map(string => Number(string));
-const streets = input.slice(1).map(street => street.split(' ').map(string => Number(string)));
-const graph = Array.from({ length: n + 1 }, () => []);
-
-streets.forEach(([from, to]) => graph[from].push(to));
-
-const solution = (graph, n, start, k) => {
-  const shortestDistances = new Array(n + 1).fill(Infinity);
-  const visited = new Array(n + 1).fill(false);
-  const result = [];
-
-  const queue = new Queue();
-  queue.enqueue([start, 0]);
-  visited[start] = true;
-
-  while (!queue.isEmpty()) {
-    const [current, count] = queue.dequeue();
-
-    for (const next of graph[current]) {
-      if (visited[next]) continue;
-      shortestDistances[next] = count + 1;
-      visited[next] = true;
-      queue.enqueue([next, count + 1]);
+  for (let i = 0; i < arr.length; i++) {
+    // 명령형에서 이렇게 예외 상황을 처리하기 위해 무언가 더 추가하게 되면 코드가 복잡해지면서 후에 유지보수하기 어려워진다.
+    if (typeof arr[i] === 'number') {
+      result.push(arr[i] * 2);
     }
   }
-
-  shortestDistances.forEach((shortestDistance, index) => {
-    if (shortestDistance === k) result.push(index);
-  });
 
   return result;
-};
+}
 
-const result = solution(graph, n, x, k);
-if (!result.length) console.log(-1);
-else console.log(result.join('\n'));
+// 선언형
+// 많은 것이 함축되었다.
+// 무엇을 원하는지에 대해 묘사되어 있다.
+// 더 간결해졌다.
+function double(arr) {
+  // 새로운 요구사항이 들어왔을 때에도 단계가 잘 나뉘어지다보니 간단하게 추가할 수 있고, 다른 사람이 봤을 때에도 이해하기 쉽다.
+  return arr.filter(number => typeof number === 'number')
+            .map(number => number * 2);
+}
+
+console.log(double([1, 2, 3, 'a']));
