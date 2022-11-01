@@ -1,40 +1,38 @@
 const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
+const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
 const input = fs.readFileSync(filePath).toString().trim().split('\n');
 
-const [row, col] = input[0].split(' ').map(string => Number(string));
-const graph = input.slice(1).map(element => element.split(' ').map(string => Number(string)));
-const dx = [-1, 0, 1, 0];
-const dy = [0, 1, 0, -1];
+const n = Number(input[0]);
+const findNumbers = input[1].split(' ').map(string => Number(string));
+const m = Number(input[2]);
+const numbers = input[3].split(' ').map(string => Number(string));
 
-const solution = (graph, row, col) => {
-  const visited = Array.from({ length: row }, (_, rowIndex) =>
-    Array.from({ length: col }, (_, colIndex) => {
-      if (!rowIndex || rowIndex === row - 1) return true;
-      if (!colIndex || colIndex === col - 1) return true;
-      return false;
-    }),
-  );
-  const totalTime = 0;
-  let lastCheese = 0;
+const solution = (findNumbers, numbers) => {
+  const sortedFindNumbers = [...findNumbers].sort((a, b) => a - b);
+  const result = new Array(numbers.length).fill(0);
 
-  const queue = [];
-  queue.push([1, 1]);
-  
-  while (queue.length > 0) {
-    const [cx, cy] = queue.shift();
-    
-    for (let i = 0; i < 4; i++) {
-      const nx = cx + dx[i];
-      const ny = cy + dy[i];
-      
-      if ((0 < nx && nx < row - 1) && (0 < ny && ny < col - 1)) {
-        
+  numbers.forEach((number, index) => {
+    let left = 0;
+    let right = sortedFindNumbers.length - 1;
+
+    while (left <= right) {
+      const mid = parseInt((left + right) / 2);
+
+      if (sortedFindNumbers[mid] === number) {
+        result[index] = 1;
+        return;
+      } else if (sortedFindNumbers[mid] > number) {
+        right = mid - 1;
+      } else if (sortedFindNumbers[mid] < number) {
+        left = mid + 1;
       }
     }
-  }
+
+    result[index] = 0;
+  });
+
+  return result.join(' ');
 };
 
-solution(graph, row, col);
-
-// const [totalTime, lastCheese] = solution(graph, row, col);
+const result = solution(findNumbers, numbers);
+console.log(result);
