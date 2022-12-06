@@ -1,47 +1,32 @@
 const fs = require('fs');
+const { transferableAbortSignal } = require('util');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
-let input = fs.readFileSync(filePath).toString().trim().split('\n');
+const input = fs.readFileSync(filePath).toString().trim().split('\n');
 
-const n = Number(input[0].split(' ')[0]);
-const m = Number(input[0].split(' ')[1]);
-const trees = input[1].split(' ').map(element => Number(element));
+const [n, m] = input[0].split(' ').map(string => Number(string));
+const trees = input[1].split(' ').map(string => Number(string));
 
-function check(currentHeight, newTrees) {
-  let result = 0;
+const calculateHeight = (height, trees) => {
+  return trees.reduce((currentHeight, tree) => {
+    return height >= tree ? currentHeight : currentHeight + (tree - height);
+  }, 0);
+};
 
-  newTrees.forEach(element => {
-    if (element >= currentHeight) {
-      result += element - currentHeight;
-    }
-  });
+const solution = (n, m, trees) => {
+  const sortedTrees = [...trees].sort((a, b) => a - b);
+  let left = 0;
+  let right = sortedTrees[sortedTrees.length - 1];
 
-  return result;
-}
-
-function solution(n, m, trees) {
-  const newTrees = [...trees];
-  newTrees.sort((a, b) => a - b);
-
-  let start = 0;
-  let end = newTrees[newTrees.length - 1];
-  let result = Number.MIN_SAFE_INTEGER;
-
-  while (start <= end) {
-    const mid = parseInt((start + end) / 2);
-
-    if (check(mid, newTrees) >= m) {
-      start = mid + 1;
-
-      if (mid > result) {
-        result = mid;
-      }
-    } else {
-      end = mid - 1;
-    }
+  while (left <= right) {
+    const mid = parseInt((left + right) / 2);
+    const totalHeight = calculateHeight(mid, sortedTrees);
+    console.log(left, right);
+    if (totalHeight >= m) left = mid + 1;
+    else right = mid - 1;
   }
 
-  return result;
-}
+  return right;
+};
 
 const result = solution(n, m, trees);
 console.log(result);

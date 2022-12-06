@@ -4,18 +4,18 @@ class Queue {
     this.front = 0;
     this.rear = 0;
   }
-  
+
   enqueue(value) {
     this.queue[this.rear++] = value;
   }
-  
+
   dequeue() {
     const dequeuedValue = this.queue[this.front];
     delete this.queue[this.front++];
-    
+
     return dequeuedValue;
   }
-  
+
   isEmpty() {
     return this.front === this.rear;
   }

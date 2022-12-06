@@ -4,7 +4,12 @@ let input = fs.readFileSync(filePath).toString().trim().split('\n');
 
 const n = Number(input[0]);
 const inputArray = input.filter((element, index) => index > 0).map(element => Number(element));
-
+/**
+ *
+ * @param {number} n
+ * @param {string} inputArray
+ * @returns
+ */
 function solution(n, inputArray) {
   let newInputArray = [...inputArray].sort((a, b) => a - b);
 
