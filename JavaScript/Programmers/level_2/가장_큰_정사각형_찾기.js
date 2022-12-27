@@ -22,3 +22,24 @@ function solution(board) {
 
   return maxValue * maxValue;
 }
+
+// 2022.12.27.
+function solution(board) {
+  const rowLength = board.length;
+  const colLength = board[0].length;
+  let result = board[0][0];
+
+  for (let i = 1; i < rowLength; i++) {
+    for (let j = 1; j < colLength; j++) {
+      if (board[i][j]) {
+        board[i][j] = Math.min(board[i - 1][j - 1], board[i - 1][j], board[i][j - 1]) + 1;
+
+        if (board[i][j] > result) {
+          result = board[i][j];
+        }
+      }
+    }
+  }
+
+  return result * result;
+}
