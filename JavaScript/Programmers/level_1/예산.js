@@ -1,3 +1,22 @@
+// 2023.01.23.
+function solution(d, budget) {
+  const newD = [...d].sort((a, b) => a - b);
+  let currentBudget = 0;
+  let count = 0;
+
+  newD.forEach(current => {
+    if (currentBudget + current <= budget) {
+      currentBudget += current;
+      count += 1;
+      return;
+    }
+
+    return;
+  });
+
+  return count;
+}
+
 // 그리디
 function solution(d, budget) {
   let count = 0;
