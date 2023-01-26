@@ -1,3 +1,16 @@
+// 2023.01.26.
+var majorityElement = function (nums) {
+  const record = {};
+
+  for (const num of nums) {
+    record[num] = record[num] ? record[num] + 1 : 1;
+
+    if (record[num] > Math.floor(nums.length / 2)) {
+      return num;
+    }
+  }
+};
+
 var majorityElement = function (nums) {
   const map = new Map();
   let resultValue = -Infinity;
