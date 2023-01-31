@@ -1,4 +1,4 @@
-// 2023.01.03.
+// 2023-01-03
 function solution(answers) {
   const one = [1, 2, 3, 4, 5];
   const two = [2, 1, 2, 3, 2, 4, 2, 5];

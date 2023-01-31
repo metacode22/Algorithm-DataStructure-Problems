@@ -1,4 +1,4 @@
-// 2023.01.26.
+// 2023-01-26
 var majorityElement = function (nums) {
   const record = {};
 

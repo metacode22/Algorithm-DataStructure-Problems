@@ -1,4 +1,4 @@
-// 2023.01.02
+// 2023-01-02
 function solution(arr) {
   const stack = [];
 

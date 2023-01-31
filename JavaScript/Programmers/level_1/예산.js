@@ -1,4 +1,4 @@
-// 2023.01.23.
+// 2023-01-23
 function solution(d, budget) {
   const newD = [...d].sort((a, b) => a - b);
   let currentBudget = 0;
