@@ -23,7 +23,7 @@ function solution(board) {
   return maxValue * maxValue;
 }
 
-// 2022.12.27.
+// 2022-12-27
 function solution(board) {
   const rowLength = board.length;
   const colLength = board[0].length;

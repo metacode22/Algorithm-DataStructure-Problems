@@ -1,4 +1,4 @@
-// 2022.12.25. 풀이
+// 2022-12-25
 function solution(priorities, location) {
   const newPrioritiesWithOrder = priorities.map((value, index) => [value, index]);
   let result = 0;

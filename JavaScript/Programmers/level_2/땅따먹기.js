@@ -14,7 +14,7 @@ function solution(land) {
   return Math.max(...newLands[newLands.length - 1]);
 }
 
-// 2022.12.25
+// 2022-12-25
 // function solution(land) {
 //   const landRowLength = land.length;
 //   const landColLength = land[0].length;

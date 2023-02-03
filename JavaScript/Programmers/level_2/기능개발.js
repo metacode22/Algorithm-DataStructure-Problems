@@ -1,3 +1,27 @@
+// 2023-02-03
+function solution(progresses, speeds) {
+  const result = [];
+
+  while (progresses.length) {
+    progresses.forEach((progress, index) => {
+      progresses[index] = progress + speeds[index];
+    });
+
+    let count = 0;
+    while (progresses.length && progresses[0] >= 100) {
+      progresses.shift();
+      speeds.shift();
+      count += 1;
+    }
+
+    if (count !== 0) {
+      result.push(count);
+    }
+  }
+
+  return result;
+}
+
 function solution(progresses, speeds) {
   const result = new Array();
   const newProgresses = [...progresses];
