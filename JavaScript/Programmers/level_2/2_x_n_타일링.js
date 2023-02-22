@@ -1,3 +1,18 @@
+// 2023-02-23
+function solution(n) {
+  if (n < 3) return n;
+
+  const dp = new Array(n).fill(0);
+  dp[0] = 1;
+  dp[1] = 2;
+
+  for (let i = 2; i < n; i++) {
+    dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007;
+  }
+
+  return dp[n - 1];
+}
+
 // 질문하기에서 DP라는 힌트를 얻고 DP로 품.
 // n이 60,000 이하의 자연수이다 보니 DFS로 풀면 깊이가 60,000까지 갈 수 있다. 거기에 reduce까지 했으니 O(N)이 될 것 같다.
 // 반면 DP로 풀면 for문 1번 도니까 O(N)
