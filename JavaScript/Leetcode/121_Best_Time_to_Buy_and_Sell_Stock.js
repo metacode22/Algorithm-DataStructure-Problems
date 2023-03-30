@@ -52,27 +52,27 @@ var maxProfit = function (prices) {
 };
 
 // 2023-02-18
-var maxProfit = function (prices) {
-  const result = [0];
-  let smallestPrice = prices[0];
-  let currentIndex = 1;
-  let currentPrice = prices[0];
-  let count = 0;
+// var maxProfit = function (prices) {
+//   const result = [0];
+//   let smallestPrice = prices[0];
+//   let currentIndex = 1;
+//   let currentPrice = prices[0];
+//   let count = 0;
 
-  prices.forEach(price => {
-    if (price < smallestPrice) {
-      smallestPrice = price;
-      result[currentIndex] = count;
-      count = 0;
-      currentIndex += 1;
-      currentPrice = price;
-    } else if (currentPrice < price) {
-      count += price - currentPrice;
-      currentPrice = price;
-    }
-  });
+//   prices.forEach(price => {
+//     if (price < smallestPrice) {
+//       smallestPrice = price;
+//       result[currentIndex] = count;
+//       count = 0;
+//       currentIndex += 1;
+//       currentPrice = price;
+//     } else if (currentPrice < price) {
+//       count += price - currentPrice;
+//       currentPrice = price;
+//     }
+//   });
 
-  result[currentIndex] = count;
+//   result[currentIndex] = count;
 
-  return Math.max(...result);
-};
+//   return Math.max(...result);
+// };
