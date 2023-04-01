@@ -27,29 +27,29 @@ const maxProfit = prices => {
 };
 
 // 2022-12-28
-var maxProfit = function (prices) {
-  let left = 0;
-  let right = 1;
-  let result = 0;
+// var maxProfit = function (prices) {
+//   let left = 0;
+//   let right = 1;
+//   let result = 0;
 
-  while (right < prices.length) {
-    const buy = prices[left];
-    const sell = prices[right];
+//   while (right < prices.length) {
+//     const buy = prices[left];
+//     const sell = prices[right];
 
-    if (buy > sell) {
-      left = right;
-      right += 1;
-    } else {
-      if (sell - buy > result) {
-        result = sell - buy;
-      }
+//     if (buy > sell) {
+//       left = right;
+//       right += 1;
+//     } else {
+//       if (sell - buy > result) {
+//         result = sell - buy;
+//       }
 
-      right += 1;
-    }
-  }
+//       right += 1;
+//     }
+//   }
 
-  return result;
-};
+//   return result;
+// };
 
 // 2023-02-18
 // var maxProfit = function (prices) {
