@@ -1,3 +1,4 @@
-const getRandomIndex = (min, max) => Math.floor(Math.random() * (max + 1)) + min;
+const array = [];
 
-console.log(getRandomIndex(0, 2))
+const copy = array.map(value => value);
+console.log(copy);
